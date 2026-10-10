@@ -8,6 +8,8 @@ use ForumKit\Core\Modules\Module;
 use ForumKit\Core\Modules\ModuleRegistry;
 use ForumKit\Core\Navigation\NavigationGroupDefinition;
 use ForumKit\Core\Navigation\NavigationGroupRegistry;
+use ForumKit\Core\Schema\PackageSchema;
+use ForumKit\Core\Schema\SchemaRegistry;
 use ForumKit\Entitlements\Commands\SyncEntitlementsCommand;
 use ForumKit\Entitlements\Contracts\SuperUserCheck;
 use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
@@ -41,6 +43,10 @@ class EntitlementsServiceProvider extends ServiceProvider
     {
         $this->app->make(ModuleRegistry::class)->register(
             new Module('entitlements', 'ForumKit Entitlements', 'zencart/forumkit-entitlements', requires: ['core']),
+        );
+
+        $this->app->make(SchemaRegistry::class)->register(
+            PackageSchema::fromFile('entitlements', __DIR__.'/../database/schema.php', __DIR__.'/../database/migrations'),
         );
 
         $this->registerNavigationGroups();
