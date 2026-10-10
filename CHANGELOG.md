@@ -4,3 +4,18 @@ All notable changes to this package are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+
+## [0.1.0] - 2026-10-10
+
+First release. Requires `zencart/forumkit-core` `^0.1`. The API may change between `0.x` minor versions.
+
+### Added
+
+- Tables, models and enums for entitlement definitions, user grants, default grants and requests, matching the schema of the site they were extracted from, with a schema snapshot so `forumkit:adopt` can adopt an existing database.
+- `EntitlementResolver`: resolves a user's entitlements from default grants, direct grants and grants contributed by other packages; wildcard (`a.b.*`) matching; per-user versioned cache with immediate invalidation; per-request memoisation; `explain()` for provenance.
+- `AuthorizationService` (`allows`, `allowsAny`, `allowsAll`) as the single place that answers authorization questions, the `AuthorizesWithEntitlements` trait for policies, and the optional `HasEntitlements` trait for the host user model.
+- Extension points: `EntitlementRegistry` (package-declared definitions, key sources and grant sources), `GrantSource`, `EntitlementKeySource` and `SuperUserCheck`.
+- Definition catalogue and `forumkit:entitlements:sync`; a definition is created when missing and never overwritten, so staff edits survive.
+- Approve, reject and revoke request actions, with `EntitlementRequestApproved`, `EntitlementRequestRejected` and `EntitlementRequestRevoked` events.
+- Gate bridge: `forumkit-entitlements.gates` maps Gate abilities (`forumkit.settings.manage`, `forumkit.entitlements.manage`, `forumkit.entitlements.view`) to entitlement keys, which a host can remap to its own.
+- Filament resources for definitions, user grants, default grants and requests (with review actions), and user relation managers for grants and requests. All are denied until the matching ability is defined.
