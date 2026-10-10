@@ -1,0 +1,2 @@
+providers:
+  - ForumKit\Entitlements\EntitlementsServiceProvider
