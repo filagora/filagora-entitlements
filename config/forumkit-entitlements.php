@@ -16,4 +16,18 @@ return [
     */
     'cache_ttl_seconds' => (int) env('FORUMKIT_ENTITLEMENTS_CACHE_TTL', 300),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Gate abilities
+    |--------------------------------------------------------------------------
+    |
+    | Maps a Laravel Gate ability to the entitlement that allows it. Packages whose
+    | screens are gated by an ability are listed here with their own entitlement key;
+    | point an ability at a different entitlement to use your own keys.
+    |
+    */
+    'gates' => [
+        'forumkit.settings.manage' => 'forumkit.settings.manage',
+    ],
+
 ];

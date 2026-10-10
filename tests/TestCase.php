@@ -18,6 +18,7 @@ use Filament\Widgets\WidgetsServiceProvider;
 use ForumKit\Core\CoreServiceProvider;
 use ForumKit\Entitlements\EntitlementsServiceProvider;
 use ForumKit\Entitlements\Tests\Support\TestSupportServiceProvider;
+use ForumKit\Entitlements\Tests\Support\TestUser;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -46,6 +47,8 @@ abstract class TestCase extends Orchestra
 
     protected function defineEnvironment($app): void
     {
+        $app['config']->set('forumkit.user_model', TestUser::class);
+        $app['config']->set('auth.providers.users.model', TestUser::class);
         $app['config']->set('app.key', 'base64:'.base64_encode(str_repeat('k', 32)));
     }
 }
