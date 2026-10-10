@@ -50,11 +50,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/zcwilt/forumkit-core"
-        }
-    ]
+    "prefer-stable": true
 }

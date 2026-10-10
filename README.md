@@ -4,7 +4,7 @@ Entitlement definitions, user and default grants, requests, a cached resolver an
 authorization service for ForumKit, as a Laravel 13 / Filament 5 plugin. Requires
 [`zencart/forumkit-core`](https://github.com/zcwilt/forumkit-core).
 
-> `0.x`: the API may change between minor versions. Not yet on Packagist; install from GitHub.
+> `0.x`: the API may change between minor versions.
 
 ## Install
 
