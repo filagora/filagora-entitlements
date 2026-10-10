@@ -28,6 +28,8 @@ return [
     */
     'gates' => [
         'forumkit.settings.manage' => 'forumkit.settings.manage',
+        'forumkit.entitlements.manage' => 'forumkit.entitlements.manage',
+        'forumkit.entitlements.view' => 'forumkit.entitlements.view',
     ],
 
 ];

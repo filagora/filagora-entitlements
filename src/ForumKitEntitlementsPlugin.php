@@ -6,6 +6,10 @@ namespace ForumKit\Entitlements;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
+use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 
 class ForumKitEntitlementsPlugin implements Plugin
 {
@@ -21,7 +25,12 @@ class ForumKitEntitlementsPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        // Register resources, pages and widgets here.
+        $panel->resources([
+            EntitlementDefinitionResource::class,
+            UserEntitlementGrantResource::class,
+            DefaultEntitlementGrantResource::class,
+            EntitlementRequestResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void

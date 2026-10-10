@@ -6,6 +6,8 @@ namespace ForumKit\Entitlements;
 
 use ForumKit\Core\Modules\Module;
 use ForumKit\Core\Modules\ModuleRegistry;
+use ForumKit\Core\Navigation\NavigationGroupDefinition;
+use ForumKit\Core\Navigation\NavigationGroupRegistry;
 use ForumKit\Entitlements\Commands\SyncEntitlementsCommand;
 use ForumKit\Entitlements\Contracts\SuperUserCheck;
 use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
@@ -41,6 +43,7 @@ class EntitlementsServiceProvider extends ServiceProvider
             new Module('entitlements', 'ForumKit Entitlements', 'zencart/forumkit-entitlements', requires: ['core']),
         );
 
+        $this->registerNavigationGroups();
         $this->declareOwnEntitlements();
 
         DefaultEntitlementGrant::observe(BumpDefaultEntitlementsCacheObserver::class);
@@ -61,6 +64,25 @@ class EntitlementsServiceProvider extends ServiceProvider
                 __DIR__.'/../config/forumkit-entitlements.php' => config_path('forumkit-entitlements.php'),
             ], 'forumkit-entitlements-config');
         }
+    }
+
+    private function registerNavigationGroups(): void
+    {
+        $groups = $this->app->make(NavigationGroupRegistry::class);
+
+        $groups->register(new NavigationGroupDefinition(
+            key: 'members',
+            label: fn (): string => __('forumkit-entitlements::messages.navigation_groups.members'),
+            icon: 'heroicon-o-user-group',
+            sort: 20,
+        ));
+
+        $groups->register(new NavigationGroupDefinition(
+            key: 'queues',
+            label: fn (): string => __('forumkit-entitlements::messages.navigation_groups.queues'),
+            icon: 'heroicon-o-inbox-stack',
+            sort: 30,
+        ));
     }
 
     /**
