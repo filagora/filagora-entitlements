@@ -1,8 +1,10 @@
 # ForumKit Entitlements
 
 Entitlement definitions, user and default grants, requests, a cached resolver and the
-authorization service for ForumKit, as a Laravel 13 / Filament 5 plugin. Requires
-`zcwilt/forumkit-core` ([zcwilt/forumkit-core](https://github.com/zcwilt/forumkit-core) on GitHub).
+authorization service for ForumKit, as a Laravel 13 / Filament 5 plugin. An *entitlement* is a
+named permission such as `forums.read`; users hold them through grants, and everything else in
+ForumKit asks "may this user do this?" through one service. Requires
+[`zcwilt/forumkit-core`](https://github.com/zcwilt/forumkit-core).
 
 > `0.x`: the API may change between minor versions.
 
@@ -10,13 +12,96 @@ authorization service for ForumKit, as a Laravel 13 / Filament 5 plugin. Require
 
 ```bash
 composer require zcwilt/forumkit-entitlements
-php artisan vendor:publish --tag=forumkit-entitlements-config
 php artisan migrate
+php artisan forumkit:entitlements:sync   # creates definitions for the keys packages declare
 ```
 
+Register both plugins on a Filament panel:
+
 ```php
-->plugin(\ForumKit\Entitlements\ForumKitEntitlementsPlugin::make())
+->plugins([
+    \ForumKit\Core\ForumKitCorePlugin::make(),
+    \ForumKit\Entitlements\ForumKitEntitlementsPlugin::make(),
+])
 ```
+
+Publish the config if you want to change it: `php artisan vendor:publish --tag=forumkit-entitlements-config`.
+
+## What it provides
+
+- **Tables and models** for definitions, user grants, default grants and requests
+  (`EntitlementDefinition`, `UserEntitlementGrant`, `DefaultEntitlementGrant`, `EntitlementRequest`).
+- **`EntitlementResolver`** works out what a user holds from default grants (all users,
+  authenticated users or verified users), direct grants (with start, expiry and revocation) and
+  grants other packages contribute. Wildcards work: a grant of `api.plugins.*` covers
+  `api.plugins.read`. Results are cached per user under a versioned key that is invalidated the
+  moment a grant changes, and memoised for the request. `explain()` says where an entitlement
+  came from.
+- **`AuthorizationService`**: `allows`, `allowsAny` and `allowsAll`, the single place that
+  answers authorization questions. Policies can use the `AuthorizesWithEntitlements` trait.
+- **Filament screens** for definitions, user grants, default grants and a request queue with
+  approve, reject and revoke, plus two relation managers for your own user resource.
+- **Actions and events** for reviewing requests: `ApproveEntitlementRequest`,
+  `RejectEntitlementRequest`, `RevokeEntitlementRequest`, and the matching
+  `EntitlementRequestApproved`, `EntitlementRequestRejected` and `EntitlementRequestRevoked` events.
+- **`forumkit:entitlements:sync`** creates a definition for every key packages declare or grants
+  use. It only creates: a definition staff have edited is never overwritten.
+- **`forumkit:adopt`** support: the package ships a snapshot of its four tables, so a site that
+  already has them can adopt them (see core).
+
+## Access control
+
+Every screen is **denied until the user holds the matching entitlement**. Each screen is guarded
+by a Gate ability, and `gates` in the config maps the ability to the entitlement that opens it:
+
+| Gate ability | Opens | Default entitlement key |
+| --- | --- | --- |
+| `forumkit.entitlements.manage` | Definitions, user grants, default grants, the user relation manager for grants | `forumkit.entitlements.manage` |
+| `forumkit.entitlements.view` | The request queue and reviewing requests, the user relation manager for requests | `forumkit.entitlements.view` |
+| `forumkit.settings.manage` | Core's settings screen | `forumkit.settings.manage` |
+
+A single wildcard grant, `forumkit.*`, opens all of them. To use your own keys, change the right
+side of the map in `config/forumkit-entitlements.php`:
+
+```php
+'gates' => [
+    'forumkit.entitlements.manage' => 'admin.entitlements.manage',
+],
+```
+
+Keys in the map are created as definitions by `forumkit:entitlements:sync`.
+
+## Using it in your app
+
+1. Add the optional trait to your user model: `use \ForumKit\Entitlements\Concerns\HasEntitlements;`
+   (the relations to grants and requests, and `hasEntitlement()`). ForumKit never alters your
+   `users` table.
+2. Attach the relation managers to your own user resource:
+   `UserEntitlementsRelationManager` and `UserEntitlementRequestsRelationManager`.
+3. Ask questions through the service:
+
+   ```php
+   app(\ForumKit\Entitlements\Services\AuthorizationService::class)->allows($user, 'forums.read');
+   ```
+
+   or `Gate::allows('forumkit.entitlements.manage')` for the abilities above.
+
+## Extending
+
+- **Declare your keys**: `app(EntitlementRegistry::class)->define(new Definition('forums.read', label: 'Read forums'))`.
+  Packages declare the entitlements they own this way; `EntitlementKeySource` lists further keys
+  (for example those set on forums).
+- **Grants from elsewhere** (a memberships add-on, say): implement `GrantSource` and register it
+  with `EntitlementRegistry::grantSource()`. The resolver merges its grants with the rest.
+- **A super-user bypass**: bind your own `SuperUserCheck` in the container to grant every
+  entitlement to certain users (for example a role). The default bypasses nobody.
+
+## Configuration
+
+| Key | Environment | Default | Meaning |
+| --- | --- | --- | --- |
+| `cache_ttl_seconds` | `FORUMKIT_ENTITLEMENTS_CACHE_TTL` | `300` | Upper bound on how long a user's resolved entitlements are cached (minimum 30). Changes made through the package take effect immediately regardless |
+| `gates` | | the three above | Gate ability to entitlement key |
 
 ## Testing
 
