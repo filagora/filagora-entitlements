@@ -2,14 +2,14 @@
 
 Entitlement definitions, user and default grants, requests, a cached resolver and the
 authorization service for ForumKit, as a Laravel 13 / Filament 5 plugin. Requires
-`zencart/forumkit-core` ([zcwilt/forumkit-core](https://github.com/zcwilt/forumkit-core) on GitHub).
+`zcwilt/forumkit-core` ([zcwilt/forumkit-core](https://github.com/zcwilt/forumkit-core) on GitHub).
 
 > `0.x`: the API may change between minor versions.
 
 ## Install
 
 ```bash
-composer require zencart/forumkit-entitlements
+composer require zcwilt/forumkit-entitlements
 php artisan vendor:publish --tag=forumkit-entitlements-config
 php artisan migrate
 ```

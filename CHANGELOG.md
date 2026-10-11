@@ -5,6 +5,12 @@ All notable changes to this package are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-11
+
+### Changed
+
+- **The Composer package is now `zcwilt/forumkit-entitlements`** (it was `zencart/forumkit-entitlements`), matching the GitHub owner, and it requires `zcwilt/forumkit-core` `^0.1`. Change your `composer.json` requirements to the new names; the code, the `ForumKit\Entitlements\` namespace and the API are unchanged. The old `zencart/...` packages are abandoned.
+
 ## [0.1.0] - 2026-10-10
 
 First release. Requires `zencart/forumkit-core` `^0.1`. The API may change between `0.x` minor versions.
