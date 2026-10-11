@@ -42,7 +42,7 @@ class EntitlementsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->make(ModuleRegistry::class)->register(
-            new Module('entitlements', 'ForumKit Entitlements', 'zencart/forumkit-entitlements', requires: ['core']),
+            new Module('entitlements', 'ForumKit Entitlements', 'zcwilt/forumkit-entitlements', requires: ['core']),
         );
 
         $this->app->make(SchemaRegistry::class)->register(
