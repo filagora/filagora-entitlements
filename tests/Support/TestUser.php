@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Tests\Support;
+namespace Filagora\Entitlements\Tests\Support;
 
-use ForumKit\Entitlements\Concerns\HasEntitlements;
+use Filagora\Entitlements\Concerns\HasEntitlements;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

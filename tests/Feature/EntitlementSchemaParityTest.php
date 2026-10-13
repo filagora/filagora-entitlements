@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Schema;
  */
 function createUnprefixedEntitlementTables(): void
 {
-    config(['forumkit.table_prefix' => '']);
+    config(['filagora.table_prefix' => '']);
 
-    $migration = require __DIR__.'/../../database/migrations/2026_10_10_100000_create_forumkit_entitlement_tables.php';
+    $migration = require __DIR__.'/../../database/migrations/2026_10_10_100000_create_filagora_entitlement_tables.php';
     $migration->down();
     $migration->up();
 }
@@ -91,7 +91,7 @@ afterEach(function () {
     }
 
     // Testbench rolls migrations back on teardown using the current config.
-    config(['forumkit.table_prefix' => 'forumkit_']);
+    config(['filagora.table_prefix' => 'filagora_']);
 });
 
 /**

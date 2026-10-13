@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas;
+namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Models\EntitlementDefinition;
 
 class DefaultEntitlementGrantForm
 {
@@ -19,7 +19,7 @@ class DefaultEntitlementGrantForm
         return $schema
             ->components([
                 Select::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.default_grants.form.entitlement'))
+                    ->label(__('filagora-entitlements::messages.default_grants.form.entitlement'))
                     ->required()
                     ->options(fn (): array => EntitlementDefinition::selectorOptions())
                     ->searchable()
@@ -38,7 +38,7 @@ class DefaultEntitlementGrantForm
                     ->rows(3)
                     ->columnSpanFull(),
                 KeyValue::make('meta')
-                    ->label(__('forumkit-entitlements::messages.default_grants.form.metadata'))
+                    ->label(__('filagora-entitlements::messages.default_grants.form.metadata'))
                     ->columnSpanFull(),
             ]);
     }

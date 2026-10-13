@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use ForumKit\Entitlements\Contracts\EntitlementKeySource;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Registry\Definition;
-use ForumKit\Entitlements\Registry\EntitlementRegistry;
-use ForumKit\Entitlements\Services\EntitlementDefinitionCatalog;
-use ForumKit\Entitlements\Tests\Support\TestUser;
+use Filagora\Entitlements\Contracts\EntitlementKeySource;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Registry\Definition;
+use Filagora\Entitlements\Registry\EntitlementRegistry;
+use Filagora\Entitlements\Services\EntitlementDefinitionCatalog;
+use Filagora\Entitlements\Tests\Support\TestUser;
 
 function catalog(): EntitlementDefinitionCatalog
 {
@@ -98,7 +98,7 @@ it('offers active definitions as selector options', function () {
 it('syncs from the artisan command', function () {
     app(EntitlementRegistry::class)->define(new Definition('cmd.key'));
 
-    $this->artisan('forumkit:entitlements:sync')->expectsOutputToContain('in sync')->assertExitCode(0);
+    $this->artisan('filagora:entitlements:sync')->expectsOutputToContain('in sync')->assertExitCode(0);
 
     expect(EntitlementDefinition::where('key', 'cmd.key')->exists())->toBeTrue();
 });
@@ -106,5 +106,5 @@ it('syncs from the artisan command', function () {
 it('declares the entitlement behind the settings screen', function () {
     catalog()->synchronizeAll();
 
-    expect(EntitlementDefinition::where('key', 'forumkit.settings.manage')->sole()->supports_wildcard_children)->toBeFalse();
+    expect(EntitlementDefinition::where('key', 'filagora.settings.manage')->sole()->supports_wildcard_children)->toBeFalse();
 });

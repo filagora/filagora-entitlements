@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Pages;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages;
 
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
 
 class EditEntitlementDefinition extends EditRecord
 {

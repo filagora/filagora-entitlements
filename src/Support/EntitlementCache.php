@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Support;
+namespace Filagora\Entitlements\Support;
 
-use ForumKit\Entitlements\Services\EntitlementResolver;
+use Filagora\Entitlements\Services\EntitlementResolver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
@@ -31,7 +31,7 @@ final class EntitlementCache
 
     public function ttlSeconds(): int
     {
-        $configured = config('forumkit-entitlements.cache_ttl_seconds', 300);
+        $configured = config('filagora-entitlements.cache_ttl_seconds', 300);
 
         return max(30, is_numeric($configured) ? (int) $configured : 300);
     }

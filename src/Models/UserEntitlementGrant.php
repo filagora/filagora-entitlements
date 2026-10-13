@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Models;
+namespace Filagora\Entitlements\Models;
 
-use ForumKit\Core\Support\Tables;
-use ForumKit\Core\Support\UserModel;
+use Filagora\Core\Support\Tables;
+use Filagora\Core\Support\UserModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

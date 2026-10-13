@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Tables;
+namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,7 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Table;
-use ForumKit\Core\Support\UserModel;
+use Filagora\Core\Support\UserModel;
 
 class UserEntitlementGrantsTable
 {
@@ -22,17 +22,17 @@ class UserEntitlementGrantsTable
             ->defaultSort('id', 'desc')
             ->columns([
                 TextColumn::make("user.{$title}")
-                    ->label(__('forumkit-entitlements::messages.user_grants.table.user'))
+                    ->label(__('filagora-entitlements::messages.user_grants.table.user'))
                     ->searchable(),
                 TextColumn::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.user_grants.table.entitlement'))
+                    ->label(__('filagora-entitlements::messages.user_grants.table.entitlement'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('grant_type')
                     ->badge()
                     ->searchable(),
                 TextColumn::make("grantedBy.{$title}")
-                    ->label(__('forumkit-entitlements::messages.user_grants.table.granted_by'))
+                    ->label(__('filagora-entitlements::messages.user_grants.table.granted_by'))
                     ->placeholder('-')
                     ->toggleable(),
                 TextColumn::make('starts_at')

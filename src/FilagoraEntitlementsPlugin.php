@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements;
+namespace Filagora\Entitlements;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 
-class ForumKitEntitlementsPlugin implements Plugin
+class FilagoraEntitlementsPlugin implements Plugin
 {
     public static function make(): static
     {
@@ -20,7 +20,7 @@ class ForumKitEntitlementsPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'forumkit-entitlements';
+        return 'filagora-entitlements';
     }
 
     public function register(Panel $panel): void

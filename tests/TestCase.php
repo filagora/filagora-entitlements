@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Tests;
+namespace Filagora\Entitlements\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -15,11 +15,11 @@ use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use ForumKit\Core\CoreServiceProvider;
-use ForumKit\Entitlements\EntitlementsServiceProvider;
-use ForumKit\Entitlements\Tests\Support\TestPanelProvider;
-use ForumKit\Entitlements\Tests\Support\TestSupportServiceProvider;
-use ForumKit\Entitlements\Tests\Support\TestUser;
+use Filagora\Core\CoreServiceProvider;
+use Filagora\Entitlements\EntitlementsServiceProvider;
+use Filagora\Entitlements\Tests\Support\TestPanelProvider;
+use Filagora\Entitlements\Tests\Support\TestSupportServiceProvider;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -49,7 +49,7 @@ abstract class TestCase extends Orchestra
 
     protected function defineEnvironment($app): void
     {
-        $app['config']->set('forumkit.user_model', TestUser::class);
+        $app['config']->set('filagora.user_model', TestUser::class);
         $app['config']->set('auth.providers.users.model', TestUser::class);
         $app['config']->set('app.key', 'base64:'.base64_encode(str_repeat('k', 32)));
     }

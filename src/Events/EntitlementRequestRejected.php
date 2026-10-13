@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Events;
+namespace Filagora\Entitlements\Events;
 
-use ForumKit\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\EntitlementRequest;
 use Illuminate\Foundation\Events\Dispatchable;
 
 /**

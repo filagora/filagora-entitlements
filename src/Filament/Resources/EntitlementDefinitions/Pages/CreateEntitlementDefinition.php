@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Pages;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages;
 
 use Filament\Resources\Pages\CreateRecord;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
 
 class CreateEntitlementDefinition extends CreateRecord
 {

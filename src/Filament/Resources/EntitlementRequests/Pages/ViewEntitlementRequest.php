@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Pages;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages;
 
 use Filament\Resources\Pages\ViewRecord;
-use ForumKit\Entitlements\Filament\Actions\ReviewActions;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
-use ForumKit\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Filament\Actions\ReviewActions;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use Filagora\Entitlements\Models\EntitlementRequest;
 
 class ViewEntitlementRequest extends ViewRecord
 {

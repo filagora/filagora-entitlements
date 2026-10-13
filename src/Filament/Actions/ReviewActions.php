@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Actions;
+namespace Filagora\Entitlements\Filament\Actions;
 
 use Closure;
 use Filament\Actions\Action;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
-use ForumKit\Entitlements\Actions\ApproveEntitlementRequest;
-use ForumKit\Entitlements\Actions\RejectEntitlementRequest;
-use ForumKit\Entitlements\Actions\RevokeEntitlementRequest;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Actions\ApproveEntitlementRequest;
+use Filagora\Entitlements\Actions\RejectEntitlementRequest;
+use Filagora\Entitlements\Actions\RevokeEntitlementRequest;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Models\EntitlementRequest;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -40,17 +40,17 @@ final class ReviewActions
     public static function approve(?Closure $record = null, ?Closure $onReviewed = null): Action
     {
         return Action::make('approve')
-            ->label(__('forumkit-entitlements::messages.requests.actions.approve'))
+            ->label(__('filagora-entitlements::messages.requests.actions.approve'))
             ->color('success')
             ->icon('heroicon-o-check-circle')
             ->visible(fn (?Model $record_ = null): bool => self::resolve($record, $record_)->status === EntitlementRequestStatus::PENDING)
             ->schema([
                 Textarea::make('review_notes')
-                    ->label(__('forumkit-entitlements::messages.requests.actions.review_notes'))
+                    ->label(__('filagora-entitlements::messages.requests.actions.review_notes'))
                     ->rows(4)
                     ->maxLength(5000),
                 DateTimePicker::make('expires_at')
-                    ->label(__('forumkit-entitlements::messages.requests.actions.grant_expires_at'))
+                    ->label(__('filagora-entitlements::messages.requests.actions.grant_expires_at'))
                     ->seconds(false),
             ])
             ->action(function (array $data, ?Model $record_ = null) use ($record, $onReviewed): void {
@@ -68,13 +68,13 @@ final class ReviewActions
     public static function reject(?Closure $record = null, ?Closure $onReviewed = null): Action
     {
         return Action::make('reject')
-            ->label(__('forumkit-entitlements::messages.requests.actions.reject'))
+            ->label(__('filagora-entitlements::messages.requests.actions.reject'))
             ->color('danger')
             ->icon('heroicon-o-x-circle')
             ->visible(fn (?Model $record_ = null): bool => self::resolve($record, $record_)->status === EntitlementRequestStatus::PENDING)
             ->schema([
                 Textarea::make('review_notes')
-                    ->label(__('forumkit-entitlements::messages.requests.actions.review_notes'))
+                    ->label(__('filagora-entitlements::messages.requests.actions.review_notes'))
                     ->rows(4)
                     ->required()
                     ->maxLength(5000),
@@ -93,13 +93,13 @@ final class ReviewActions
     public static function revoke(?Closure $record = null, ?Closure $onReviewed = null): Action
     {
         return Action::make('revoke')
-            ->label(__('forumkit-entitlements::messages.requests.actions.revoke'))
+            ->label(__('filagora-entitlements::messages.requests.actions.revoke'))
             ->color('danger')
             ->icon('heroicon-o-no-symbol')
             ->visible(fn (?Model $record_ = null): bool => self::resolve($record, $record_)->status === EntitlementRequestStatus::APPROVED)
             ->schema([
                 Textarea::make('review_notes')
-                    ->label(__('forumkit-entitlements::messages.requests.actions.revocation_notes'))
+                    ->label(__('filagora-entitlements::messages.requests.actions.revocation_notes'))
                     ->rows(4)
                     ->required()
                     ->maxLength(5000),
@@ -140,7 +140,7 @@ final class ReviewActions
         }
 
         Notification::make()
-            ->title(__("forumkit-entitlements::messages.requests.notifications.{$outcome}"))
+            ->title(__("filagora-entitlements::messages.requests.notifications.{$outcome}"))
             ->success()
             ->send();
     }

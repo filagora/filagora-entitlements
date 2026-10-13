@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Models;
+namespace Filagora\Entitlements\Models;
 
-use ForumKit\Core\Support\Tables;
+use Filagora\Core\Support\Tables;
 use Illuminate\Database\Eloquent\Model;
 
 /**

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use ForumKit\Entitlements\Concerns\AuthorizesWithEntitlements;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Services\AuthorizationService;
-use ForumKit\Entitlements\Tests\Support\TestUser;
+use Filagora\Entitlements\Concerns\AuthorizesWithEntitlements;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Services\AuthorizationService;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Illuminate\Foundation\Auth\User as PlainUser;
 
 function authz(): AuthorizationService

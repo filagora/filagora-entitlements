@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Schemas;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Schemas;
 
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Textarea;
@@ -19,14 +19,14 @@ class EntitlementDefinitionForm
                 TextInput::make('key')
                     ->required()
                     ->maxLength(255)
-                    ->helperText(__('forumkit-entitlements::messages.definitions.form.key_help'))
+                    ->helperText(__('filagora-entitlements::messages.definitions.form.key_help'))
                     ->unique(ignoreRecord: true),
                 TextInput::make('label')
                     ->required()
                     ->maxLength(255),
                 TextInput::make('namespace')
                     ->maxLength(255)
-                    ->helperText(__('forumkit-entitlements::messages.definitions.form.namespace_help')),
+                    ->helperText(__('filagora-entitlements::messages.definitions.form.namespace_help')),
                 TextInput::make('sort_order')
                     ->required()
                     ->numeric()
@@ -47,7 +47,7 @@ class EntitlementDefinitionForm
                     ->rows(4)
                     ->columnSpanFull(),
                 KeyValue::make('meta')
-                    ->label(__('forumkit-entitlements::messages.definitions.form.metadata'))
+                    ->label(__('filagora-entitlements::messages.definitions.form.metadata'))
                     ->columnSpanFull(),
             ]);
     }

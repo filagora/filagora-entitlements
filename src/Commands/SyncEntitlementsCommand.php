@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Commands;
+namespace Filagora\Entitlements\Commands;
 
-use ForumKit\Entitlements\Services\EntitlementDefinitionCatalog;
+use Filagora\Entitlements\Services\EntitlementDefinitionCatalog;
 use Illuminate\Console\Command;
 
 class SyncEntitlementsCommand extends Command
 {
-    protected $signature = 'forumkit:entitlements:sync';
+    protected $signature = 'filagora:entitlements:sync';
 
     protected $description = 'Create entitlement definitions for every key declared by packages or used by grants';
 

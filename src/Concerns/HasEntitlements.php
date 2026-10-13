@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Concerns;
+namespace Filagora\Entitlements\Concerns;
 
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Services\EntitlementResolver;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Services\EntitlementResolver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

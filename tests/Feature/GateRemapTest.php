@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Tests\Feature;
+namespace Filagora\Entitlements\Tests\Feature;
 
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Tests\Support\TestUser;
-use ForumKit\Entitlements\Tests\TestCase;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use Filagora\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Tests\Support\TestUser;
+use Filagora\Entitlements\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Gate;
 
@@ -23,8 +23,8 @@ class GateRemapTest extends TestCase
     {
         parent::defineEnvironment($app);
 
-        $app['config']->set('forumkit-entitlements.gates', [
-            'forumkit.entitlements.manage' => 'operator.entitlements.manage',
+        $app['config']->set('filagora-entitlements.gates', [
+            'filagora.entitlements.manage' => 'operator.entitlements.manage',
         ]);
     }
 
@@ -35,19 +35,19 @@ class GateRemapTest extends TestCase
 
         $this->assertFalse(EntitlementDefinitionResource::canViewAny());
 
-        UserEntitlementGrant::create(['user_id' => $user->id, 'entitlement_key' => 'forumkit.entitlements.manage', 'grant_type' => 'manual']);
+        UserEntitlementGrant::create(['user_id' => $user->id, 'entitlement_key' => 'filagora.entitlements.manage', 'grant_type' => 'manual']);
         $this->assertFalse(EntitlementDefinitionResource::canViewAny(), 'the package key no longer opens the gate');
 
         UserEntitlementGrant::create(['user_id' => $user->id, 'entitlement_key' => 'operator.entitlements.manage', 'grant_type' => 'manual']);
         $this->assertTrue(EntitlementDefinitionResource::canViewAny());
-        $this->assertTrue(Gate::forUser($user)->allows('forumkit.entitlements.manage'));
+        $this->assertTrue(Gate::forUser($user)->allows('filagora.entitlements.manage'));
     }
 
     public function test_the_remapped_key_is_declared_as_a_definition(): void
     {
-        $this->artisan('forumkit:entitlements:sync')->assertExitCode(0);
+        $this->artisan('filagora:entitlements:sync')->assertExitCode(0);
 
         $this->assertTrue(EntitlementDefinition::where('key', 'operator.entitlements.manage')->exists());
-        $this->assertFalse(EntitlementDefinition::where('key', 'forumkit.entitlements.manage')->exists());
+        $this->assertFalse(EntitlementDefinition::where('key', 'filagora.entitlements.manage')->exists());
     }
 }

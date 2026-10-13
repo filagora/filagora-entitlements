@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Schemas;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use ForumKit\Core\Support\UserModel;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 
 class EntitlementRequestInfolist
 {
@@ -18,14 +18,14 @@ class EntitlementRequestInfolist
 
         return $schema
             ->components([
-                Section::make(__('forumkit-entitlements::messages.requests.infolist.request_section'))
+                Section::make(__('filagora-entitlements::messages.requests.infolist.request_section'))
                     ->schema([
                         TextEntry::make('id'),
                         TextEntry::make("user.{$title}")
-                            ->label(__('forumkit-entitlements::messages.requests.infolist.user'))
+                            ->label(__('filagora-entitlements::messages.requests.infolist.user'))
                             ->placeholder('-'),
                         TextEntry::make('entitlement_key')
-                            ->label(__('forumkit-entitlements::messages.requests.infolist.entitlement')),
+                            ->label(__('filagora-entitlements::messages.requests.infolist.entitlement')),
                         TextEntry::make('status')
                             ->badge()
                             ->formatStateUsing(fn ($state): string => $state instanceof EntitlementRequestStatus ? $state->label() : (string) $state),
@@ -33,7 +33,7 @@ class EntitlementRequestInfolist
                             ->dateTime()
                             ->placeholder('-'),
                         TextEntry::make("reviewedBy.{$title}")
-                            ->label(__('forumkit-entitlements::messages.requests.infolist.reviewed_by'))
+                            ->label(__('filagora-entitlements::messages.requests.infolist.reviewed_by'))
                             ->placeholder('-'),
                         TextEntry::make('reviewed_at')
                             ->dateTime()
@@ -42,16 +42,16 @@ class EntitlementRequestInfolist
                             ->dateTime()
                             ->placeholder('-'),
                         TextEntry::make('request_reason')
-                            ->label(__('forumkit-entitlements::messages.requests.infolist.request_reason'))
+                            ->label(__('filagora-entitlements::messages.requests.infolist.request_reason'))
                             ->placeholder('-')
                             ->columnSpanFull(),
                         TextEntry::make('review_notes')
-                            ->label(__('forumkit-entitlements::messages.requests.infolist.review_notes'))
+                            ->label(__('filagora-entitlements::messages.requests.infolist.review_notes'))
                             ->placeholder('-')
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
-                Section::make(__('forumkit-entitlements::messages.requests.infolist.metadata_section'))
+                Section::make(__('filagora-entitlements::messages.requests.infolist.metadata_section'))
                     ->schema([
                         TextEntry::make('meta')
                             ->formatStateUsing(fn ($state): string => is_array($state)

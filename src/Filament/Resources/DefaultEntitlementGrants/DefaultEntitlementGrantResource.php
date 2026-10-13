@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants;
+namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants;
 
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use ForumKit\Core\Navigation\NavigationGroupRegistry;
-use ForumKit\Entitlements\Filament\Concerns\GatedByAbility;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\CreateDefaultEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\EditDefaultEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\ListDefaultEntitlementGrants;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas\DefaultEntitlementGrantForm;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Tables\DefaultEntitlementGrantsTable;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Support\Abilities;
+use Filagora\Core\Navigation\NavigationGroupRegistry;
+use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\CreateDefaultEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\EditDefaultEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\ListDefaultEntitlementGrants;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas\DefaultEntitlementGrantForm;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Tables\DefaultEntitlementGrantsTable;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Support\Abilities;
 use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 
@@ -43,17 +43,17 @@ class DefaultEntitlementGrantResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('forumkit-entitlements::messages.default_grants.navigation_label');
+        return __('filagora-entitlements::messages.default_grants.navigation_label');
     }
 
     public static function getModelLabel(): string
     {
-        return __('forumkit-entitlements::messages.default_grants.model_label');
+        return __('filagora-entitlements::messages.default_grants.model_label');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('forumkit-entitlements::messages.default_grants.plural_model_label');
+        return __('filagora-entitlements::messages.default_grants.plural_model_label');
     }
 
     public static function form(Schema $schema): Schema
