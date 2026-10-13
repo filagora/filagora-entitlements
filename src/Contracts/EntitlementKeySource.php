@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Contracts;
+namespace Filagora\Entitlements\Contracts;
 
 /**
  * Lists the entitlement keys a package refers to (for example the keys set on its

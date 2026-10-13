@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Enums;
+namespace Filagora\Entitlements\Enums;
 
 enum EntitlementRequestStatus: string
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Models;
+namespace Filagora\Entitlements\Models;
 
-use ForumKit\Core\Support\Tables;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Core\Support\Tables;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;

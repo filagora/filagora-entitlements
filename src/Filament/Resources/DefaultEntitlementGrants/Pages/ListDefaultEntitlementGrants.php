@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages;
+namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages;
 
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
 
 class ListDefaultEntitlementGrants extends ListRecords
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Models;
+namespace Filagora\Entitlements\Models;
 
-use ForumKit\Core\Support\Tables;
-use ForumKit\Core\Support\UserModel;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Core\Support\Tables;
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use ForumKit\Entitlements\Contracts\GrantSource;
-use ForumKit\Entitlements\Contracts\SuperUserCheck;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Registry\EntitlementRegistry;
-use ForumKit\Entitlements\Services\EntitlementResolver;
-use ForumKit\Entitlements\Tests\Support\TestUser;
+use Filagora\Entitlements\Contracts\GrantSource;
+use Filagora\Entitlements\Contracts\SuperUserCheck;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Registry\EntitlementRegistry;
+use Filagora\Entitlements\Services\EntitlementResolver;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

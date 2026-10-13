@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Tables;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -35,7 +35,7 @@ class EntitlementDefinitionsTable
                     ->boolean(),
                 IconColumn::make('supports_wildcard_children')
                     ->boolean()
-                    ->label(__('forumkit-entitlements::messages.definitions.table.wildcard')),
+                    ->label(__('filagora-entitlements::messages.definitions.table.wildcard')),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('sort_order')

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Registry;
+namespace Filagora\Entitlements\Registry;
 
 /**
  * An entitlement a package declares. Synced into the definitions table by
- * `forumkit:entitlements:sync`.
+ * `filagora:entitlements:sync`.
  */
 final readonly class Definition
 {

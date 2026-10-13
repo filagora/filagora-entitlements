@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\CreateDefaultEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\EditDefaultEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\ListDefaultEntitlementGrants;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\CreateEntitlementDefinition;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\EditEntitlementDefinition;
+use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\ListEntitlementDefinitions;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ListEntitlementRequests;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ViewEntitlementRequest;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\CreateUserEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\EditUserEntitlementGrant;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\ListUserEntitlementGrants;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Services\EntitlementResolver;
+use Filagora\Entitlements\Support\Abilities;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Filament\Facades\Filament;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Filament\Concerns\GatedByAbility;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\CreateDefaultEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\EditDefaultEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\ListDefaultEntitlementGrants;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\CreateEntitlementDefinition;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\EditEntitlementDefinition;
-use ForumKit\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\ListEntitlementDefinitions;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Pages\ListEntitlementRequests;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Pages\ViewEntitlementRequest;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\CreateUserEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\EditUserEntitlementGrant;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Pages\ListUserEntitlementGrants;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Services\EntitlementResolver;
-use ForumKit\Entitlements\Support\Abilities;
-use ForumKit\Entitlements\Tests\Support\TestUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
@@ -87,7 +87,7 @@ it('denies an action whose gate ability is undefined or has none', function () {
         }
     };
 
-    $resource::$ability = 'forumkit.nothing.defines.this';
+    $resource::$ability = 'filagora.nothing.defines.this';
     expect($resource::getAuthorizationResponse('viewAny')->allowed())->toBeFalse();
 
     $resource::$ability = null;

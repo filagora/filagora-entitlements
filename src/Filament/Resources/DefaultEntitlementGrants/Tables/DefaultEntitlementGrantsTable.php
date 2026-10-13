@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\DefaultEntitlementGrants\Tables;
+namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Tables;
 
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Table;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
 
 class DefaultEntitlementGrantsTable
 {
@@ -20,7 +20,7 @@ class DefaultEntitlementGrantsTable
             ->defaultSort('id', 'desc')
             ->columns([
                 TextColumn::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.default_grants.table.entitlement'))
+                    ->label(__('filagora-entitlements::messages.default_grants.table.entitlement'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('target_type')

@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementRequests;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests;
 
 use BackedEnum;
+use Filagora\Core\Navigation\NavigationGroupRegistry;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ListEntitlementRequests;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ViewEntitlementRequest;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Schemas\EntitlementRequestInfolist;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Tables\EntitlementRequestsTable;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Support\Abilities;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use ForumKit\Core\Navigation\NavigationGroupRegistry;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Filament\Concerns\GatedByAbility;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Pages\ListEntitlementRequests;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Pages\ViewEntitlementRequest;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Schemas\EntitlementRequestInfolist;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Tables\EntitlementRequestsTable;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Support\Abilities;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -49,17 +49,17 @@ class EntitlementRequestResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('forumkit-entitlements::messages.requests.navigation_label');
+        return __('filagora-entitlements::messages.requests.navigation_label');
     }
 
     public static function getModelLabel(): string
     {
-        return __('forumkit-entitlements::messages.requests.model_label');
+        return __('filagora-entitlements::messages.requests.model_label');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('forumkit-entitlements::messages.requests.plural_model_label');
+        return __('filagora-entitlements::messages.requests.plural_model_label');
     }
 
     public static function form(Schema $schema): Schema
@@ -108,7 +108,7 @@ class EntitlementRequestResource extends Resource
     public static function getPendingRequestCount(): int
     {
         $request = app()->bound('request') ? app(Request::class) : null;
-        $key = 'forumkit.entitlements.pending_request_count';
+        $key = 'filagora.entitlements.pending_request_count';
 
         if ($request instanceof Request && $request->attributes->has($key)) {
             return (int) $request->attributes->get($key);

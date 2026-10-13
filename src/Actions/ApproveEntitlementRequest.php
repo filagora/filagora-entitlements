@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Actions;
+namespace Filagora\Entitlements\Actions;
 
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Events\EntitlementRequestApproved;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Events\EntitlementRequestApproved;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

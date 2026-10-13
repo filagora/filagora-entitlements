@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Services;
+namespace Filagora\Entitlements\Services;
 
-use ForumKit\Core\Support\UserModel;
+use Filagora\Core\Support\UserModel;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 

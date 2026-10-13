@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Support;
+namespace Filagora\Entitlements\Support;
 
-use ForumKit\Entitlements\Contracts\SuperUserCheck;
+use Filagora\Entitlements\Contracts\SuperUserCheck;
 use Illuminate\Database\Eloquent\Model;
 
 final class NoSuperUser implements SuperUserCheck

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\EntitlementRequests\Tables;
+namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Tables;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use ForumKit\Core\Support\UserModel;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
 
 class EntitlementRequestsTable
 {
@@ -24,11 +24,11 @@ class EntitlementRequestsTable
                 TextColumn::make('id')
                     ->sortable(),
                 TextColumn::make("user.{$title}")
-                    ->label(__('forumkit-entitlements::messages.requests.table.user'))
+                    ->label(__('filagora-entitlements::messages.requests.table.user'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.requests.table.entitlement'))
+                    ->label(__('filagora-entitlements::messages.requests.table.entitlement'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('status')
@@ -38,7 +38,7 @@ class EntitlementRequestsTable
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make("reviewedBy.{$title}")
-                    ->label(__('forumkit-entitlements::messages.requests.table.reviewed_by'))
+                    ->label(__('filagora-entitlements::messages.requests.table.reviewed_by'))
                     ->placeholder('-')
                     ->toggleable(),
                 TextColumn::make('reviewed_at')

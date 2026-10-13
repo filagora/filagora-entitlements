@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Actions;
+namespace Filagora\Entitlements\Actions;
 
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Events\EntitlementRequestRejected;
-use ForumKit\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Events\EntitlementRequestRejected;
+use Filagora\Entitlements\Models\EntitlementRequest;
 use Illuminate\Database\Eloquent\Model;
 
 class RejectEntitlementRequest

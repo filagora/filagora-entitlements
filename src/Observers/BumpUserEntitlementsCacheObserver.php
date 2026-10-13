@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Observers;
+namespace Filagora\Entitlements\Observers;
 
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Support\EntitlementCache;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Support\EntitlementCache;
 
 final class BumpUserEntitlementsCacheObserver
 {

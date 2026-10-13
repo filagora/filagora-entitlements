@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Concerns;
+namespace Filagora\Entitlements\Filament\Concerns;
 
 use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;

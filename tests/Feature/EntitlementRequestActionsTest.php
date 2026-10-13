@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-use ForumKit\Entitlements\Actions\ApproveEntitlementRequest;
-use ForumKit\Entitlements\Actions\RejectEntitlementRequest;
-use ForumKit\Entitlements\Actions\RevokeEntitlementRequest;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Events\EntitlementRequestApproved;
-use ForumKit\Entitlements\Events\EntitlementRequestRejected;
-use ForumKit\Entitlements\Events\EntitlementRequestRevoked;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Services\EntitlementResolver;
-use ForumKit\Entitlements\Tests\Support\TestUser;
+use Filagora\Entitlements\Actions\ApproveEntitlementRequest;
+use Filagora\Entitlements\Actions\RejectEntitlementRequest;
+use Filagora\Entitlements\Actions\RevokeEntitlementRequest;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Events\EntitlementRequestApproved;
+use Filagora\Entitlements\Events\EntitlementRequestRejected;
+use Filagora\Entitlements\Events\EntitlementRequestRevoked;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Services\EntitlementResolver;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Illuminate\Support\Facades\Event;
 
 function pendingRequest(TestUser $user, string $key = 'perk.key'): EntitlementRequest

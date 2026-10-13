@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Registry;
+namespace Filagora\Entitlements\Registry;
 
-use ForumKit\Entitlements\Contracts\EntitlementKeySource;
-use ForumKit\Entitlements\Contracts\GrantSource;
+use Filagora\Entitlements\Contracts\EntitlementKeySource;
+use Filagora\Entitlements\Contracts\GrantSource;
 
 /**
  * What packages declare to the entitlements package: the entitlement keys they own,

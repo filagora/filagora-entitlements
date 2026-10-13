@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Services;
+namespace Filagora\Entitlements\Services;
 
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\EntitlementDefinition;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Registry\Definition;
-use ForumKit\Entitlements\Registry\EntitlementRegistry;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\EntitlementDefinition;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Registry\Definition;
+use Filagora\Entitlements\Registry\EntitlementRegistry;
 use Illuminate\Support\Collection;
 
 /**

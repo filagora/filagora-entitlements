@@ -14,7 +14,7 @@ return [
     | only the upper bound for changes made outside the package.
     |
     */
-    'cache_ttl_seconds' => (int) env('FORUMKIT_ENTITLEMENTS_CACHE_TTL', 300),
+    'cache_ttl_seconds' => (int) env('FILAGORA_ENTITLEMENTS_CACHE_TTL', 300),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,9 +27,9 @@ return [
     |
     */
     'gates' => [
-        'forumkit.settings.manage' => 'forumkit.settings.manage',
-        'forumkit.entitlements.manage' => 'forumkit.entitlements.manage',
-        'forumkit.entitlements.view' => 'forumkit.entitlements.view',
+        'filagora.settings.manage' => 'filagora.settings.manage',
+        'filagora.entitlements.manage' => 'filagora.entitlements.manage',
+        'filagora.entitlements.view' => 'filagora.entitlements.view',
     ],
 
 ];

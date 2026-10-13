@@ -1,2 +1,2 @@
 providers:
-  - ForumKit\Entitlements\EntitlementsServiceProvider
+  - Filagora\Entitlements\EntitlementsServiceProvider

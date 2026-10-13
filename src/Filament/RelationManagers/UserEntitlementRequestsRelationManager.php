@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\RelationManagers;
+namespace Filagora\Entitlements\Filament\RelationManagers;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
+use Filagora\Entitlements\Filament\Actions\ReviewActions;
+use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use Filagora\Entitlements\Support\Abilities;
 use Filament\Actions\Action;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use ForumKit\Core\Support\UserModel;
-use ForumKit\Entitlements\Enums\EntitlementRequestStatus;
-use ForumKit\Entitlements\Filament\Actions\ReviewActions;
-use ForumKit\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
-use ForumKit\Entitlements\Support\Abilities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 
@@ -27,7 +27,7 @@ class UserEntitlementRequestsRelationManager extends RelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('forumkit-entitlements::messages.relation_managers.requests.title');
+        return __('filagora-entitlements::messages.relation_managers.requests.title');
     }
 
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
@@ -42,10 +42,10 @@ class UserEntitlementRequestsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('entitlement_key')
             ->defaultSort('requested_at', 'desc')
-            ->description(__('forumkit-entitlements::messages.relation_managers.requests.description'))
+            ->description(__('filagora-entitlements::messages.relation_managers.requests.description'))
             ->columns([
                 TextColumn::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.requests.table.entitlement'))
+                    ->label(__('filagora-entitlements::messages.requests.table.entitlement'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('status')
@@ -56,7 +56,7 @@ class UserEntitlementRequestsRelationManager extends RelationManager
                     ->placeholder('-')
                     ->sortable(),
                 TextColumn::make("reviewedBy.{$title}")
-                    ->label(__('forumkit-entitlements::messages.requests.table.reviewed_by'))
+                    ->label(__('filagora-entitlements::messages.requests.table.reviewed_by'))
                     ->placeholder('-')
                     ->searchable(),
                 TextColumn::make('reviewed_at')
@@ -71,7 +71,7 @@ class UserEntitlementRequestsRelationManager extends RelationManager
             ->headerActions([])
             ->recordActions([
                 Action::make('view_request')
-                    ->label(__('forumkit-entitlements::messages.relation_managers.requests.open'))
+                    ->label(__('filagora-entitlements::messages.relation_managers.requests.open'))
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->color('gray')
                     ->url(fn ($record): string => EntitlementRequestResource::getUrl('view', ['record' => $record])),

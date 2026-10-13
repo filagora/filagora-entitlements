@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\RelationManagers;
+namespace Filagora\Entitlements\Filament\RelationManagers;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Schemas\UserEntitlementGrantForm;
+use Filagora\Entitlements\Support\Abilities;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
@@ -11,9 +14,6 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use ForumKit\Core\Support\UserModel;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Schemas\UserEntitlementGrantForm;
-use ForumKit\Entitlements\Support\Abilities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 
@@ -28,7 +28,7 @@ class UserEntitlementsRelationManager extends RelationManager
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('forumkit-entitlements::messages.relation_managers.grants.title');
+        return __('filagora-entitlements::messages.relation_managers.grants.title');
     }
 
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
@@ -48,18 +48,18 @@ class UserEntitlementsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('entitlement_key')
             ->defaultSort('id', 'desc')
-            ->description(__('forumkit-entitlements::messages.relation_managers.grants.description'))
+            ->description(__('filagora-entitlements::messages.relation_managers.grants.description'))
             ->columns([
                 TextColumn::make('entitlement_key')
-                    ->label(__('forumkit-entitlements::messages.user_grants.table.entitlement'))
+                    ->label(__('filagora-entitlements::messages.user_grants.table.entitlement'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('grant_type')
                     ->badge()
                     ->searchable(),
                 TextColumn::make("grantedBy.{$title}")
-                    ->label(__('forumkit-entitlements::messages.user_grants.table.granted_by'))
-                    ->placeholder(__('forumkit-entitlements::messages.relation_managers.grants.system'))
+                    ->label(__('filagora-entitlements::messages.user_grants.table.granted_by'))
+                    ->placeholder(__('filagora-entitlements::messages.relation_managers.grants.system'))
                     ->searchable(),
                 TextColumn::make('starts_at')
                     ->dateTime()

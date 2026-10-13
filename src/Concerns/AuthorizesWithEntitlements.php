@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Concerns;
+namespace Filagora\Entitlements\Concerns;
 
-use ForumKit\Entitlements\Services\AuthorizationService;
+use Filagora\Entitlements\Services\AuthorizationService;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**

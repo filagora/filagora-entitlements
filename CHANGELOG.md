@@ -5,6 +5,13 @@ All notable changes to this package are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-13
+
+### Changed
+
+- **Renamed to Filagora.** The Composer package is now `filagora/filagora-entitlements` (it was `zcwilt/forumkit-entitlements`) and the repository is `github.com/filagora/filagora-entitlements`. The PHP namespace is `Filagora\Entitlements\` (was `ForumKit\Entitlements\`), the config file is `config/filagora-entitlements.php`, the default entitlement keys and Gate abilities start with `filagora.` (for example `filagora.entitlements.manage`), the command is `filagora:entitlements:sync`, and the table prefix is `filagora_`. It requires `filagora/filagora-core` `^0.2`. Nothing else changed: moving from 0.1 means renaming those names in your application, its config and its stored keys.
+
+
 ## [0.1.1] - 2026-10-11
 
 ### Changed

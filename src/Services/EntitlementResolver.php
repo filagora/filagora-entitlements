@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Services;
+namespace Filagora\Entitlements\Services;
 
 use Carbon\CarbonInterface;
-use ForumKit\Entitlements\Contracts\SuperUserCheck;
-use ForumKit\Entitlements\Enums\DefaultEntitlementTarget;
-use ForumKit\Entitlements\Models\DefaultEntitlementGrant;
-use ForumKit\Entitlements\Models\EntitlementRequest;
-use ForumKit\Entitlements\Models\UserEntitlementGrant;
-use ForumKit\Entitlements\Registry\EntitlementRegistry;
-use ForumKit\Entitlements\Support\EntitlementCache;
+use Filagora\Entitlements\Contracts\SuperUserCheck;
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Models\DefaultEntitlementGrant;
+use Filagora\Entitlements\Models\EntitlementRequest;
+use Filagora\Entitlements\Models\UserEntitlementGrant;
+use Filagora\Entitlements\Registry\EntitlementRegistry;
+use Filagora\Entitlements\Support\EntitlementCache;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Database\Eloquent\Model;

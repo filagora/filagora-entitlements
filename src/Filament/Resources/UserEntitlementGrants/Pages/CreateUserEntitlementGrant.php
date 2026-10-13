@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\Pages;
+namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages;
 
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 use Filament\Resources\Pages\CreateRecord;
-use ForumKit\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 
 class CreateUserEntitlementGrant extends CreateRecord
 {
