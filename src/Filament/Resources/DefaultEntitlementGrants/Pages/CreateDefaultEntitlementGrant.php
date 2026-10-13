@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
 use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
+use Filament\Resources\Pages\CreateRecord;
 
 class CreateDefaultEntitlementGrant extends CreateRecord
 {

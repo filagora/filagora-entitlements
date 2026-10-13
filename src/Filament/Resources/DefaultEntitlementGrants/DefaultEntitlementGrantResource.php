@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants;
 
 use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
 use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
 use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Pages\CreateDefaultEntitlementGrant;
@@ -18,6 +14,10 @@ use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas\De
 use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Tables\DefaultEntitlementGrantsTable;
 use Filagora\Entitlements\Models\DefaultEntitlementGrant;
 use Filagora\Entitlements\Support\Abilities;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use UnitEnum;
 

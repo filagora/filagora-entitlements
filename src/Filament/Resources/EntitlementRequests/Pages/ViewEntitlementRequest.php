@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages;
 
-use Filament\Resources\Pages\ViewRecord;
 use Filagora\Entitlements\Filament\Actions\ReviewActions;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
 use Filagora\Entitlements\Models\EntitlementRequest;
+use Filament\Resources\Pages\ViewRecord;
 
 class ViewEntitlementRequest extends ViewRecord
 {

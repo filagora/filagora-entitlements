@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Tables;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Filagora\Core\Support\UserModel;
-use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 
 class EntitlementRequestsTable
 {

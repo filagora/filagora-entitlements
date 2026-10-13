@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\RelationManagers;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Schemas\UserEntitlementGrantForm;
+use Filagora\Entitlements\Support\Abilities;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
@@ -11,9 +14,6 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Filagora\Core\Support\UserModel;
-use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Schemas\UserEntitlementGrantForm;
-use Filagora\Entitlements\Support\Abilities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 

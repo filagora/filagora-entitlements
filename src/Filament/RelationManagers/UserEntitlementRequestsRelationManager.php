@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\RelationManagers;
 
-use Filament\Actions\Action;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Filagora\Core\Support\UserModel;
 use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filagora\Entitlements\Filament\Actions\ReviewActions;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
 use Filagora\Entitlements\Support\Abilities;
+use Filament\Actions\Action;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 

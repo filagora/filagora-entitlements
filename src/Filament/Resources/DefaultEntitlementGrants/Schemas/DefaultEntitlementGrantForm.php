@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\Schemas;
 
+use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
+use Filagora\Entitlements\Models\EntitlementDefinition;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
-use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
-use Filagora\Entitlements\Models\EntitlementDefinition;
 
 class DefaultEntitlementGrantForm
 {

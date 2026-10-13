@@ -6,6 +6,11 @@ namespace Filagora\Entitlements\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
+use Filagora\Core\CoreServiceProvider;
+use Filagora\Entitlements\EntitlementsServiceProvider;
+use Filagora\Entitlements\Tests\Support\TestPanelProvider;
+use Filagora\Entitlements\Tests\Support\TestSupportServiceProvider;
+use Filagora\Entitlements\Tests\Support\TestUser;
 use Filament\Actions\ActionsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
@@ -15,11 +20,6 @@ use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Filagora\Core\CoreServiceProvider;
-use Filagora\Entitlements\EntitlementsServiceProvider;
-use Filagora\Entitlements\Tests\Support\TestPanelProvider;
-use Filagora\Entitlements\Tests\Support\TestSupportServiceProvider;
-use Filagora\Entitlements\Tests\Support\TestUser;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages;
 
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 
 class ListUserEntitlementGrants extends ListRecords
 {

@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests;
 
 use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
 use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
@@ -18,6 +14,10 @@ use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Schemas\Entitle
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Tables\EntitlementRequestsTable;
 use Filagora\Entitlements\Models\EntitlementRequest;
 use Filagora\Entitlements\Support\Abilities;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

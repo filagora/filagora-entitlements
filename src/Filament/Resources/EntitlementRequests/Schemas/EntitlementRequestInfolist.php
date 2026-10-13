@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Schemas;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filagora\Core\Support\UserModel;
-use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 
 class EntitlementRequestInfolist
 {

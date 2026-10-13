@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Tables;
 
+use Filagora\Core\Support\UserModel;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\RecordActionsPosition;
 use Filament\Tables\Table;
-use Filagora\Core\Support\UserModel;
 
 class UserEntitlementGrantsTable
 {

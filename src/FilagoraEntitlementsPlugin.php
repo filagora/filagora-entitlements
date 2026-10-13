@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements;
 
-use Filament\Contracts\Plugin;
-use Filament\Panel;
 use Filagora\Entitlements\Filament\Resources\DefaultEntitlementGrants\DefaultEntitlementGrantResource;
 use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\EntitlementDefinitionResource;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
 use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
+use Filament\Contracts\Plugin;
+use Filament\Panel;
 
 class FilagoraEntitlementsPlugin implements Plugin
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages;
 
-use Filament\Resources\Pages\ListRecords;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\EntitlementRequestResource;
+use Filament\Resources\Pages\ListRecords;
 
 class ListEntitlementRequests extends ListRecords
 {

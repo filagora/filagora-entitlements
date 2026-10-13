@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Schemas;
 
+use Filagora\Core\Support\UserModel;
+use Filagora\Entitlements\Models\EntitlementDefinition;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
@@ -12,8 +14,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
-use Filagora\Core\Support\UserModel;
-use Filagora\Entitlements\Models\EntitlementDefinition;
 
 class UserEntitlementGrantForm
 {

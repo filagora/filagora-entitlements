@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Filament\Facades\Filament;
 use Filagora\Entitlements\Enums\DefaultEntitlementTarget;
 use Filagora\Entitlements\Enums\EntitlementRequestStatus;
 use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
@@ -28,6 +27,7 @@ use Filagora\Entitlements\Models\UserEntitlementGrant;
 use Filagora\Entitlements\Services\EntitlementResolver;
 use Filagora\Entitlements\Support\Abilities;
 use Filagora\Entitlements\Tests\Support\TestUser;
+use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\Pages;
 
+use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
-use Filagora\Entitlements\Filament\Resources\UserEntitlementGrants\UserEntitlementGrantResource;
 
 class EditUserEntitlementGrant extends EditRecord
 {
