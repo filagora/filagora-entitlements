@@ -38,7 +38,11 @@ Publish the config if you want to change it: `php artisan vendor:publish --tag=f
   moment a grant changes, and memoised for the request. `explain()` says where an entitlement
   came from.
 - **`AuthorizationService`**: `allows`, `allowsAny` and `allowsAll`, the single place that
-  answers authorization questions. Policies can use the `AuthorizesWithEntitlements` trait.
+  answers authorization questions. Policies can use the `AuthorizesWithEntitlements` trait. It is
+  also bound as core's `AccessChecker`, which is what the other Filagora packages ask whether a
+  user may use a staff screen, so installing this package is all they need. To use something else
+  (roles, a permissions package), bind your own `Filagora\Core\Contracts\AccessChecker` in your
+  application's service provider; the other packages then follow it.
 - **Filament screens** for definitions, user grants, default grants and a request queue with
   approve, reject and revoke, plus two relation managers for your own user resource.
 - **Actions and events** for reviewing requests: `ApproveEntitlementRequest`,

@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements;
 
+use Filagora\Core\Contracts\AccessChecker;
 use Filagora\Core\Modules\Module;
 use Filagora\Core\Modules\ModuleRegistry;
 use Filagora\Core\Navigation\NavigationGroupDefinition;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
 use Filagora\Core\Schema\PackageSchema;
 use Filagora\Core\Schema\SchemaRegistry;
+use Filagora\Core\Support\GateAbilities;
 use Filagora\Entitlements\Commands\SyncEntitlementsCommand;
 use Filagora\Entitlements\Contracts\SuperUserCheck;
 use Filagora\Entitlements\Models\DefaultEntitlementGrant;
@@ -23,7 +25,6 @@ use Filagora\Entitlements\Services\AuthorizationService;
 use Filagora\Entitlements\Services\EntitlementResolver;
 use Filagora\Entitlements\Support\EntitlementCache;
 use Filagora\Entitlements\Support\NoSuperUser;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,10 @@ class EntitlementsServiceProvider extends ServiceProvider
         $this->app->singleton(EntitlementRegistry::class);
         $this->app->singleton(EntitlementCache::class);
         $this->app->bindIf(SuperUserCheck::class, NoSuperUser::class);
+
+        // A plain bind, not bindIf: core binds a deny-everyone default that this must replace. A host that
+        // wants its own checker binds it in its own provider, which runs after the packages'.
+        $this->app->bind(AccessChecker::class, AuthorizationService::class);
         $this->app->scoped(EntitlementResolver::class);
     }
 
@@ -111,12 +116,6 @@ class EntitlementsServiceProvider extends ServiceProvider
      */
     private function defineGates(): void
     {
-        foreach (config('filagora-entitlements.gates', []) as $ability => $entitlement) {
-            if (! is_string($ability) || ! is_string($entitlement)) {
-                continue;
-            }
-
-            Gate::define($ability, fn (?Authenticatable $user): bool => $this->app->make(AuthorizationService::class)->allows($user, $entitlement));
-        }
+        GateAbilities::define('filagora-entitlements.gates');
     }
 }

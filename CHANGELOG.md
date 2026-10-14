@@ -5,6 +5,17 @@ All notable changes to this package are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-14
+
+### Changed
+
+- `AuthorizationService` is now the `Filagora\Core\Contracts\AccessChecker` the other packages ask (bound by this package, replacing core's deny-everyone default). A host that wants its own permission system binds its own checker instead. Behaviour with entitlements installed is unchanged.
+- The resources use the Filament trait `Filagora\Core\Filament\Concerns\GatedByAbility` and the gates come from core's `GateAbilities`. Requires `filagora/filagora-core` `^0.2.1`.
+
+### Deprecated
+
+- `Filagora\Entitlements\Filament\Concerns\GatedByAbility`: use the core trait. The old name still works.
+
 ## [0.2.0] - 2026-10-13
 
 ### Changed
