@@ -43,6 +43,9 @@ Publish the config if you want to change it: `php artisan vendor:publish --tag=f
   user may use a staff screen, so installing this package is all they need. To use something else
   (roles, a permissions package), bind your own `Filagora\Core\Contracts\AccessChecker` in your
   application's service provider; the other packages then follow it.
+- **Privacy.** Registers a `PrivacyContributor` with core: a person's grants and requests for an
+  export, and their deletion (clearing the cache) for an erasure. With `filagora-compliance`
+  installed, privacy requests use it.
 - **Filament screens** for definitions, user grants, default grants and a request queue with
   approve, reject and revoke, plus two relation managers for your own user resource.
 - **Actions and events** for reviewing requests: `ApproveEntitlementRequest`,

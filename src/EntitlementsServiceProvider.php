@@ -9,6 +9,7 @@ use Filagora\Core\Modules\Module;
 use Filagora\Core\Modules\ModuleRegistry;
 use Filagora\Core\Navigation\NavigationGroupDefinition;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
+use Filagora\Core\Privacy\PrivacyContributorRegistry;
 use Filagora\Core\Schema\PackageSchema;
 use Filagora\Core\Schema\SchemaRegistry;
 use Filagora\Core\Support\GateAbilities;
@@ -19,6 +20,7 @@ use Filagora\Entitlements\Models\UserEntitlementGrant;
 use Filagora\Entitlements\Observers\BumpDefaultEntitlementsCacheObserver;
 use Filagora\Entitlements\Observers\BumpUserEntitlementsCacheObserver;
 use Filagora\Entitlements\Observers\SyncEntitlementDefinitionObserver;
+use Filagora\Entitlements\Privacy\EntitlementsDataContributor;
 use Filagora\Entitlements\Registry\Definition;
 use Filagora\Entitlements\Registry\EntitlementRegistry;
 use Filagora\Entitlements\Services\AuthorizationService;
@@ -63,6 +65,7 @@ class EntitlementsServiceProvider extends ServiceProvider
         UserEntitlementGrant::observe(SyncEntitlementDefinitionObserver::class);
 
         $this->defineGates();
+        $this->app->make(PrivacyContributorRegistry::class)->register(new EntitlementsDataContributor);
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'filagora-entitlements');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'filagora-entitlements');
