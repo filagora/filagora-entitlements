@@ -5,6 +5,12 @@ All notable changes to this package are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-10-14
+
+### Added
+
+- **Privacy contribution**, registered with core's `PrivacyContributorRegistry` so the compliance package (or any host) can export and erase without this package knowing it: `EntitlementsDataContributor` exports a person's grants and requests, and erases them one by one, so the cached entitlements are cleared as they go. Nothing here needs `filagora-compliance`.
+
 ## [0.2.1] - 2026-10-14
 
 ### Changed
