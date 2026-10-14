@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace Filagora\Entitlements\Services;
 
+use Filagora\Core\Contracts\AccessChecker;
 use Filagora\Core\Support\UserModel;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * The single place that answers "may this user do this?" with entitlements.
- * Policies, gates and middleware call this; nothing re-implements the checks.
+ * Policies, gates and middleware call this; nothing re-implements the checks. It is also the
+ * `AccessChecker` the other packages ask, unless the host binds its own.
  */
-class AuthorizationService
+class AuthorizationService implements AccessChecker
 {
     public function __construct(private readonly EntitlementResolver $resolver) {}
 

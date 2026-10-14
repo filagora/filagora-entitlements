@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Filagora\Entitlements\Filament\Resources\EntitlementRequests;
 
 use BackedEnum;
+use Filagora\Core\Filament\Concerns\GatedByAbility;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
 use Filagora\Entitlements\Enums\EntitlementRequestStatus;
-use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ListEntitlementRequests;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Pages\ViewEntitlementRequest;
 use Filagora\Entitlements\Filament\Resources\EntitlementRequests\Schemas\EntitlementRequestInfolist;

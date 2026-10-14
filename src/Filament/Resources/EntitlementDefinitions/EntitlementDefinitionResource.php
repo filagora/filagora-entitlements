@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Filagora\Entitlements\Filament\Resources\EntitlementDefinitions;
 
 use BackedEnum;
+use Filagora\Core\Filament\Concerns\GatedByAbility;
 use Filagora\Core\Navigation\NavigationGroupRegistry;
-use Filagora\Entitlements\Filament\Concerns\GatedByAbility;
 use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\CreateEntitlementDefinition;
 use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\EditEntitlementDefinition;
 use Filagora\Entitlements\Filament\Resources\EntitlementDefinitions\Pages\ListEntitlementDefinitions;
