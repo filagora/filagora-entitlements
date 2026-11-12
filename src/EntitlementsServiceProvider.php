@@ -100,13 +100,14 @@ class EntitlementsServiceProvider extends ServiceProvider
     }
 
     /**
-     * The entitlements this package (and core, whose screens it gates) owns.
+     * The entitlements this package (and core, whose screens it gates and whose shared abilities
+     * it answers) owns.
      */
     private function declareOwnEntitlements(): void
     {
         $registry = $this->app->make(EntitlementRegistry::class);
 
-        foreach (config('filagora-entitlements.gates', []) as $entitlement) {
+        foreach ([...(array) config('filagora-entitlements.gates', []), ...(array) config('filagora.gates', [])] as $entitlement) {
             if (is_string($entitlement) && $entitlement !== '') {
                 $registry->define(new Definition($entitlement, wildcardChildren: false));
             }

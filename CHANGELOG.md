@@ -5,6 +5,10 @@ All notable changes to this package are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- Core's shared abilities are declared as definitions too (`filagora:entitlements:sync` creates them), starting with `filagora.moderate_frontend`, which lets a user moderate on the host's own pages and opens no dashboard screen. A host that remaps core's `filagora.gates` has the remapped key declared instead. Needs `filagora-core` 0.2.3 or later to have anything to declare; with an earlier core nothing changes.
+
 ## [0.2.2] - 2026-10-14
 
 ### Added
