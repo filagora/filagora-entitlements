@@ -28,7 +28,7 @@ class CoreGatesRemapTest extends TestCase
         ]);
     }
 
-    public function test_the_ability_and_the_declared_definition_follow_the_remapped_key(): void
+    public function test_the_ability_follows_the_remapped_key(): void
     {
         $user = TestUser::make('Moderator');
 
@@ -37,10 +37,12 @@ class CoreGatesRemapTest extends TestCase
 
         UserEntitlementGrant::create(['user_id' => $user->id, 'entitlement_key' => 'operator.forum.moderate_frontend', 'grant_type' => 'manual']);
         $this->assertTrue(Gate::forUser($user)->allows(Abilities::MODERATE_FRONTEND));
+    }
 
-        UserEntitlementGrant::where('entitlement_key', 'filagora.moderate_frontend')->delete();
-
+    public function test_the_remapped_key_is_declared_as_a_definition(): void
+    {
         $this->artisan('filagora:entitlements:sync')->assertExitCode(0);
+
         $this->assertTrue(EntitlementDefinition::where('key', 'operator.forum.moderate_frontend')->exists());
         $this->assertFalse(EntitlementDefinition::where('key', 'filagora.moderate_frontend')->exists());
     }
