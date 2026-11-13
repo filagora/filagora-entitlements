@@ -8,25 +8,6 @@ Filagora asks "may this user do this?" through one service. Requires
 
 > `0.x`: the API may change between minor versions.
 
-## Install
-
-```bash
-composer require filagora/filagora-entitlements
-php artisan migrate
-php artisan filagora:entitlements:sync   # creates definitions for the keys packages declare
-```
-
-Register both plugins on a Filament panel:
-
-```php
-->plugins([
-    \Filagora\Core\FilagoraCorePlugin::make(),
-    \Filagora\Entitlements\FilagoraEntitlementsPlugin::make(),
-])
-```
-
-Publish the config if you want to change it: `php artisan vendor:publish --tag=filagora-entitlements-config`.
-
 ## What it provides
 
 - **Tables and models** for definitions, user grants, default grants and requests
@@ -56,7 +37,7 @@ Publish the config if you want to change it: `php artisan vendor:publish --tag=f
 - **`filagora:adopt`** support: the package ships a snapshot of its four tables, so a site that
   already has them can adopt them (see core).
 
-## Access control
+### Access control
 
 Every screen is **denied until the user holds the matching entitlement**. Each screen is guarded
 by a Gate ability, and `gates` in the config maps the ability to the entitlement that opens it:
@@ -78,7 +59,7 @@ side of the map in `config/filagora-entitlements.php`:
 
 Keys in the map are created as definitions by `filagora:entitlements:sync`.
 
-## Using it in your app
+### Using it in your app
 
 1. Add the optional trait to your user model: `use \Filagora\Entitlements\Concerns\HasEntitlements;`
    (the relations to grants and requests, and `hasEntitlement()`). Filagora never alters your
@@ -93,6 +74,36 @@ Keys in the map are created as definitions by `filagora:entitlements:sync`.
 
    or `Gate::allows('filagora.entitlements.manage')` for the abilities above.
 
+## Requirements
+
+PHP 8.4, Laravel 13 and Filament 5. Tested against MariaDB 11.4. Requires [`filagora/filagora-core`](https://github.com/filagora/filagora-core).
+
+## Install
+
+```bash
+composer require filagora/filagora-entitlements
+php artisan migrate
+php artisan filagora:entitlements:sync   # creates definitions for the keys packages declare
+```
+
+Register both plugins on a Filament panel:
+
+```php
+->plugins([
+    \Filagora\Core\FilagoraCorePlugin::make(),
+    \Filagora\Entitlements\FilagoraEntitlementsPlugin::make(),
+])
+```
+
+Publish the config if you want to change it: `php artisan vendor:publish --tag=filagora-entitlements-config`.
+
+## Configuration
+
+| Key | Environment | Default | Meaning |
+| --- | --- | --- | --- |
+| `cache_ttl_seconds` | `FILAGORA_ENTITLEMENTS_CACHE_TTL` | `300` | Upper bound on how long a user's resolved entitlements are cached (minimum 30). Changes made through the package take effect immediately regardless |
+| `gates` | | the three above | Gate ability to entitlement key |
+
 ## Extending
 
 - **Declare your keys**: `app(EntitlementRegistry::class)->define(new Definition('forums.read', label: 'Read forums'))`.
@@ -103,20 +114,20 @@ Keys in the map are created as definitions by `filagora:entitlements:sync`.
 - **A super-user bypass**: bind your own `SuperUserCheck` in the container to grant every
   entitlement to certain users (for example a role). The default bypasses nobody.
 
-## Configuration
-
-| Key | Environment | Default | Meaning |
-| --- | --- | --- | --- |
-| `cache_ttl_seconds` | `FILAGORA_ENTITLEMENTS_CACHE_TTL` | `300` | Upper bound on how long a user's resolved entitlements are cached (minimum 30). Changes made through the package take effect immediately regardless |
-| `gates` | | the three above | Gate ability to entitlement key |
-
 ## Testing
 
 ```bash
 composer test
 ```
 
-Tests run against a real MariaDB database named `testing`.
+Tests run against a real MariaDB, never SQLite, so engine behaviour (FULLTEXT,
+`ONLY_FULL_GROUP_BY`, collation) matches production. Host and credentials come from
+your environment; the database is always named `testing`, never your development one.
+
+## Local development (DDEV)
+
+`.ddev/` is included. `ddev start` creates both `db` and `testing` (run `ddev restart` once
+if `testing` is missing), then `ddev exec vendor/bin/pest`.
 
 ## Licence
 
