@@ -10,6 +10,36 @@ Filagora asks "may this user do this?" through one service. Requires
 
 ## What it provides
 
+### Overview
+
+Entitlements for Filagora: definitions, grants, requests, a cached resolver and the authorization service.
+
+### Tables
+
+`entitlement_definitions`, `default_entitlement_grants`, `user_entitlement_grants`, `entitlement_requests`, prefixed `filagora_` by default. A site that already has them can run `php artisan filagora:adopt` instead of migrating.
+
+### Commands
+
+| Command | What it does |
+| --- | --- |
+| `filagora:entitlements:sync` | Create entitlement definitions for every key declared by packages or used by grants. |
+
+### Events
+
+- `EntitlementRequestApproved`: Dispatched after a request is approved by a reviewer.
+- `EntitlementRequestRejected`: Dispatched after a request is rejected by a reviewer.
+- `EntitlementRequestRevoked`: Dispatched after a request is revoked by a reviewer.
+
+### Access
+
+| Ability | Entitlement key |
+| --- | --- |
+| `filagora.settings.manage` | `filagora.settings.manage` |
+| `filagora.entitlements.manage` | `filagora.entitlements.manage` |
+| `filagora.entitlements.view` | `filagora.entitlements.view` |
+
+### Using it
+
 - **Tables and models** for definitions, user grants, default grants and requests
   (`EntitlementDefinition`, `UserEntitlementGrant`, `DefaultEntitlementGrant`, `EntitlementRequest`).
 - **`EntitlementResolver`** works out what a user holds from default grants (all users,
@@ -37,7 +67,7 @@ Filagora asks "may this user do this?" through one service. Requires
 - **`filagora:adopt`** support: the package ships a snapshot of its four tables, so a site that
   already has them can adopt them (see core).
 
-### Access control
+#### Access control
 
 Every screen is **denied until the user holds the matching entitlement**. Each screen is guarded
 by a Gate ability, and `gates` in the config maps the ability to the entitlement that opens it:
@@ -59,7 +89,7 @@ side of the map in `config/filagora-entitlements.php`:
 
 Keys in the map are created as definitions by `filagora:entitlements:sync`.
 
-### Using it in your app
+#### Using it in your app
 
 1. Add the optional trait to your user model: `use \Filagora\Entitlements\Concerns\HasEntitlements;`
    (the relations to grants and requests, and `hasEntitlement()`). Filagora never alters your
